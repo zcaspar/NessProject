@@ -1,4 +1,4 @@
-Attribute VB_Name = "ObjectChecker"
+Attribute VB_Name = "ObjectChecker1"
 Dim a As Variant 'this is the first dimension of the array 123
 Dim counter1 As Integer 'this is the number of rows
 Dim counter2 As Integer 'this is the number of rows in ochecker form
@@ -8,6 +8,8 @@ Dim d As Integer 'this is the no of columns along Number can be found
 Dim e As Integer 'this is the no of rows down Number can be found (i.e. header line)
 Dim f As Integer 'this is the no of columns along Delivery can be found
 Sub CopyToObjectCheckerForm()
+Call Test_If_File_Is_Open
+Call Sheet_Test
 'below is the position in the first dimension of the array
 a = 1
 Call locaterow
@@ -24,7 +26,27 @@ Call countnumbersincolumnb
 Call fandr_dash
 Call datasort
 End Sub
+Sub Test_If_File_Is_Open() 'Exits if file Project checker form.xlsm does not exist
+    Dim TestWorkbook As Workbook
+    Set TestWorkbook = Nothing
+    On Error Resume Next
+    Set TestWorkbook = Workbooks("project checker form.xlsm")
+    On Error GoTo 0
+    If TestWorkbook Is Nothing Then
+        MsgBox "'Project checker form.xlsm' is not open"
+        End
+    End If
+End Sub
+Sub Sheet_Test() 'Exits if sheet Object Checker - step 2 does not exist
+    Dim sh As Worksheet
 
+    On Error Resume Next
+    Set sh = Workbooks("project checker form.xlsm").Sheets("Object Checker - step 2") 'Workbooks("project checker form.xlsm").Activate
+    If Err.Number <> 0 Then
+        MsgBox "The sheet 'Object Checker - step 2' doesn't exist"
+        End
+    End If
+End Sub
 Sub locaterow()
 Range("a1").Select
 e = 0
@@ -32,7 +54,7 @@ e = 0
     ActiveCell.Offset(1, 0).Select
     e = e + 1
         If e >= 20 Then
-            MsgBox "'Art no' must be in first twenty cells of column A"
+            MsgBox "'Art no' must be in first twenty cells of column A in the active worksheet!"
             End 'Exit everything if row is not found
         End If
     Loop
