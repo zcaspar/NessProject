@@ -217,10 +217,10 @@ Range("E12:G1000").Select
     Range(Selection, Selection.End(xlDown)).Select
     ActiveWorkbook.Worksheets("Object Checker - step 2").Sort.SortFields.Clear
     ActiveWorkbook.Worksheets("Object Checker - step 2").Sort.SortFields.Add Key _
-        :=Range("B13:B312"), SortOn:=xlSortOnValues, Order:=xlAscending, _
+        :=Range("B13:B1000"), SortOn:=xlSortOnValues, Order:=xlAscending, _
         DataOption:=xlSortNormal
     With ActiveWorkbook.Worksheets("Object Checker - step 2").Sort
-        .SetRange Range("B13:E312")
+        .SetRange Range("B13:E1000")
         .Header = xlYes
         .MatchCase = False
         .Orientation = xlTopToBottom
