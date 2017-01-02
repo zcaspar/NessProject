@@ -21,7 +21,6 @@ Call fandrtosap
 Call pastefontfrom13
 Range("a1").Select
 Call Highlightduplicateswithyellowfill
-Call countnumbersincolumnb
 Call fandr_dash
 Call datasort
 End Sub
