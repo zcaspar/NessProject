@@ -1,7 +1,6 @@
 Attribute VB_Name = "ObjectChecker1"
 Dim a As Variant 'this is the first dimension of the array 123
 Dim counter1 As Integer 'this is the number of rows
-Dim counter2 As Integer 'this is the number of rows in ochecker form
 Dim c As Integer 'this exits if 20 blanks are found
 Dim myarray(1 To 1000, 1 To 1000) As Variant
 Dim d As Integer 'this is the no of columns along Number can be found
@@ -206,9 +205,6 @@ Columns("B:B").Select
     Selection.FormatConditions(1).StopIfTrue = False
 Columns("C:C").FormatConditions.Delete
 Columns("D:D").FormatConditions.Delete
-End Sub
-Sub countnumbersincolumnb()
-counter2 = Range("b" & Rows.Count).End(xlUp).Row
 End Sub
 Sub datasort()
 Range("E12:G1000").Select
