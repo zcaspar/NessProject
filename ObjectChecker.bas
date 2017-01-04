@@ -132,7 +132,7 @@ Sub pastearrayintoobjectchecker()
 Dim i As Integer
 i = 1
 Workbooks("project checker form.xlsm").Activate
-Range("b14").Select
+Range("b13").Select
 For i = 1 To a
         'exit if a position in the array is empty
         If IsEmpty(myarray(i, 1)) = True Then
